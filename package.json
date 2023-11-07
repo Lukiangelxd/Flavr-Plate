@@ -1,5 +1,5 @@
 {
-  "name": "googlebooks-app",
+  "name": "flavr-plate",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "jwt-decode": "^4.0.0"
   }
 }
