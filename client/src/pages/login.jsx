@@ -1,9 +1,13 @@
 //import dependencies
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client'; 
+import LOGIN_MUTATION from './your-login-mutation'; 
+
 
 function Login() {
     //State will store user data
     const [userData, setUserData] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN_MUTATION);
     //function to handle input changes
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -13,12 +17,13 @@ function Login() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try{
-            const response = await fetch('/api/users/login', {
-                method: 'POST',
-                body: JSON.stringify(userData),
-                headers: { 'Content-Type': 'application/json' },
-            });
-            if (response.status === 200) {
+            const { data } = await login({
+                variables: {
+                  email: userData.email,
+                  password: userData.password,
+                },
+              });
+            if (data.login) {
                 console.log('User logged in successfully');
             } 
             else{
@@ -26,7 +31,7 @@ function Login() {
             }
         }   
             catch (err) {
-            console.log(err);
+            console.log('GraphQL error:', err);
         }
     
     };
@@ -48,7 +53,7 @@ function Login() {
           <input
             type="password"
             name="password"
-            value={formData.password}
+            value={userData.password}
             onChange={handleChange}
           />
         </div>
