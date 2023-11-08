@@ -92,5 +92,49 @@ export const LikeRecipe = gql`
         }
     }
     `;
-
+export const LOGIN = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+export const UpdateRecipe = gql`
+  mutation updateRecipe($recipeId: ID!, $input: RecipeInput!) {
+    updateRecipe(_id: $recipeId, input: $input) {
+      id
+      name
+      description
+      image
+      instructions
+      author {
+        _id
+        userName
+        email
+      }
+      comments {
+        _id
+        text
+      }
+      likes {
+        _id
+        userName
+        email
+      }
+      categories {
+        _id
+        name
+      }
+      ingredients {
+        _id
+        name
+        amount
+      }
+      createdAt
+    }
+  }
+`;
 
