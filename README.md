@@ -2,6 +2,8 @@
 
 ![Flavr Plate logo](https://github.com/Lukiangelxd/Flavr-Plate/assets/133689246/44f2fe44-0205-4b11-9770-555a45919dd7)
 
+<img src="![Flavr Plate logo](https://github.com/Lukiangelxd/Flavr-Plate/assets/133689246/44f2fe44-0205-4b11-9770-555a45919dd7)" width="200px">
+
 Welcome to **Flavr Plate**, a MERN (MongoDB, Express.js, React, Node.js) single-page application that brings at-home chefs together to share and discover recipes in a blog-style format. Connect with fellow food enthusiasts, explore diverse cuisines, and unleash your culinary creativity.
 
 
