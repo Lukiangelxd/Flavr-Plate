@@ -1,7 +1,17 @@
 import React from 'react';
+import {useQuery} from '@apollo/client';
+import { GET_USER } from '../utils/queries';
 import { Avatar, Typography, Paper, List, ListItemButton } from '@mui/material';
 
+
 const UserProfile = ({ user, posts }) => {
+
+const {
+  loading, data
+} = useQuery (GET_USER);
+
+const user = data?.user||[]
+
   return (
     <div style={{ display: 'flex' }}>
       {/* On left, user Profile */}
