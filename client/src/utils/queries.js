@@ -6,7 +6,7 @@ export const GET_RECIPES = gql`
       _id
       title
       description
-      ingredients
+      ingredients1
       instructions
       category {
         _id
