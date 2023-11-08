@@ -104,12 +104,12 @@ export const GET_USER = gql`
             username  # Include the relevant user information
           }
         }
-        likes {
+      }
+      likes {
           _id
           name
           image
           description
-        }
       }
       createdAt
       }
