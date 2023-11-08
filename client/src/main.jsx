@@ -6,7 +6,6 @@ import Signup from './pages/Signup.jsx'
 import App from './App.jsx'
 import Error from './pages/Errorpage.jsx'
 
-
 const router = createBrowserRouter([
   {
     path: '/',
