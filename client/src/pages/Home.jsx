@@ -1,49 +1,54 @@
 import React from 'react';
+import { Container, Typography, Button, Grid, Paper } from '@mui/material';
 
-function Home() {
+const Home = () => {
   return (
-    <div className="site-wrapper">
-      <header>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
+    <Container maxWidth="lg">
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper elevation={3}>
+            <Typography variant="h4" component="div">
+              Container 1
+            </Typography>
+            {/* Content for Container 1 */}
+          </Paper>
+        </Grid>
 
-      <main>
-        <h1>Welcome to Our Website</h1>
-        <p>This is the home page of our website. You can add your content here.</p>
-        
-        <div className="category-container">
-          <h2>Category 1</h2>
-          {/* Add content for Category 1 here */}
-        </div>
-        
-        <div className="category-container">
-          <h2>Category 2</h2>
-          {/* Add content for Category 2 here */}
-        </div>
-        
-        <div className="category-container">
-          <h2>Category 3</h2>
-          {/* Add content for Category 3 here */}
-        </div>
-        
-        <div className="category-container">
-          <h2>Category 4</h2>
-          {/* Add content for Category 4 here */}
-        </div>
-      </main>
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3}>
+            <Typography variant="h4" component="div">
+              Container 2
+            </Typography>
+            {/* Content for Container 2 */}
+          </Paper>
+        </Grid>
 
-      <footer className="footer">
-        &copy; 2023 Your Website
-      </footer>
-    </div>
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3}>
+            <Typography variant="h4" component="div">
+              Container 3
+            </Typography>
+            {/* Content for Container 3 */}
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Paper elevation={3}>
+            <Typography variant="h4" component="div">
+              Container 4
+            </Typography>
+            {/* Content for Container 4 */}
+          </Paper>
+        </Grid>
+      </Grid>
+      {/* Footer */}
+      <Paper elevation={3} style={{ marginTop: '20px', padding: '20px' }}>
+        <Typography variant="body2" align="center">
+          Flavr-Plate &copy; 2023
+        </Typography>
+      </Paper>
+    </Container>
   );
-}
+};
 
 export default Home;
