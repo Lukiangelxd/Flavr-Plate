@@ -10,7 +10,7 @@ function Login() {
         setUserData({ ...userData, [name]: value });
     };
     //Form Submission function
-    const handleFormSubmit = (event) => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault();
         try{
             const response = await fetch('/api/users/login', {
@@ -24,19 +24,40 @@ function Login() {
             else{
                 console.log('User login failed');
             }
-
-    
+        }   
+            catch (err) {
+            console.log(err);
         }
     
-    //need to finish
-    
-    
     };
-
-
-
-
-
-
-
+    return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 }
+
+export default Login;
+
+
