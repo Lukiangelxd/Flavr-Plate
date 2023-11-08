@@ -6,7 +6,12 @@ export const GET_RECIPES = gql`
       _id
       title
       description
-      ingredients
+      image
+      ingredients {
+        _id
+        name
+        amount
+      }
       instructions
       category {
         _id
@@ -17,6 +22,17 @@ export const GET_RECIPES = gql`
         username
       }
       createdAt
+      comments {
+        _id
+        text
+        user {
+          _id
+          username  # Include the relevant user information
+        }
+      }
+      likes {
+        _id
+      }
     }
   }
 `;
@@ -27,7 +43,12 @@ export const GET_SINGLE_RECIPE = gql`
       _id
       title
       description
-      ingredients
+      image
+      ingredients {
+        _id
+        name
+        amount
+      }
       instructions
       category {
         _id
@@ -38,6 +59,17 @@ export const GET_SINGLE_RECIPE = gql`
         username
       }
       createdAt
+      comments {
+        _id
+        text
+        user {
+          _id
+          username  # Include the relevant user information
+        }
+      }
+      likes {
+        _id
+      }
     }
   }
 `;
@@ -60,8 +92,27 @@ export const GET_USER = gql`
       email
       recipes {
         _id
-        title
-        createdAt
+        name
+        image
+        description
+        instructions
+        comments {
+          _id
+          text
+          user {
+            _id
+            username  # Include the relevant user information
+          }
+        }
+        likes {
+          _id
+          name
+          image
+          description
+        }
+      }
+      createdAt
+
       }
     }
   }
