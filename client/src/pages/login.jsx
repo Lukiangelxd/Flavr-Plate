@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useMutation } from '@apollo/client'; 
-import LOGIN_USER from '../utils/mutations'; 
+import LOGIN from '../utils/mutations'; 
 import Auth from '../utils/auth';
 import { purple } from '@mui/material/colors';
 
@@ -16,7 +16,7 @@ function Login() {
         password: '',
         username: '',
     });
-    const [loginUser, { error,data }] = useMutation(LOGIN_USER);
+    const [loginUser, { error,data }] = useMutation(LOGIN);
     //function to handle input changes
     const handleInputChange = (event) => {
         const { name, value } = event.target;
