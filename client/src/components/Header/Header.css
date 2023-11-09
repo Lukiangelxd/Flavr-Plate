@@ -1,0 +1,23 @@
+.header {
+
+  background-color: khaki;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  
+}
+
+.header__left {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.header__right {
+  flex: 0.5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
