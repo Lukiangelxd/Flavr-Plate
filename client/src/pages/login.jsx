@@ -1,68 +1,95 @@
 //import dependencies
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import { useMutation } from '@apollo/client'; 
-//import LOGIN from '../utils/mutations'; 
+import LOGIN_USER from '../utils/mutations'; 
+import Auth from '../utils/auth';
+import { purple } from '@mui/material/colors';
 
 
 function Login() {
     //State will store user data
-    const [userData, setUserData] = useState({ email: '', password: '' });
-    const [login, { error }] = useMutation(LOGIN_MUTATION);
+    const [formData, setFormData] = useState({ 
+        password: '',
+        username: '',
+    });
+    const [loginUser, { error,data }] = useMutation(LOGIN_USER);
     //function to handle input changes
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setUserData({ ...userData, [name]: value });
+        setFormData({ ...formData, [name]: value });
     };
     //Form Submission function
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        try{
-            const { data } = await login({
-                variables: {
-                  email: userData.email,
-                  password: userData.password,
-                },
-              });
-            if (data.login) {
-                console.log('User logged in successfully');
-            } 
-            else{
-                console.log('User login failed');
-            }
-        }   
-            catch (err) {
-            console.log('GraphQL error:', err);
-        }
-    
-    };
+        try {
+            const { data } = await loginUser({
+              variables: { ...formData },
+            });
+      
+            Auth.login(data.login.token);
+          } catch (err) {
+            console.error(err);
+          }
+        };
     return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
+        <main className="flex-row justify-center mb-4">
+        {data ? (
+          <p>
+            Success! You are now logged in.{' '}
+            <Link to="/">back to the homepage.</Link>
+          </p>
+        ) : (
+            <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleFormSubmit}
+            >
+        <TextField
+            required
+            id="outlined-required-email"
+            label="Email"
             name="email"
-            value={formData.email}
+            placeholder="Email"
             onChange={handleInputChange}
           />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
+          <TextField
+            required
+            id="outlined-required-password"
+            label="Password"
             name="password"
-            value={userData.password}
-            onChange={handleChange}
+            type="password"
+            placeholder="Password"
+            onChange={handleInputChange}
           />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+          <Button
+            variant="contained"
+            sx={{
+            color: (theme) => theme.palette.getContrastText(purple[500]),
+            backgroundColor: purple[500],
+            '&:hover': {
+            backgroundColor: purple[700],
+            },
+        }}
+            type="submit">Login</Button>
+        </Box>
+      )}
+      {error && (
+            <div className="my-3 p-3 bg-danger text-white">{error.message}
+            </div>
+        )}
+    </main>
   );
 }
 
 export default Login;
+
 
 
