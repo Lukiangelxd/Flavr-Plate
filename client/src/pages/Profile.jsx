@@ -45,8 +45,8 @@ const UserProfile = ({ username }) => {
                 {recipe.comments.map((comment) => (
                   <div key={comment._id}>
                     <p>Comment by {comment.user.username}: {comment.text}</p>
-                    </div>
-              ))}
+                  </div>
+          ))}
           </div>
           </ListItemButton>
           ))}
