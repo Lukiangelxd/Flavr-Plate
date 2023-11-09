@@ -105,6 +105,7 @@ export const GET_USER = gql`
           }
         }
       }
+      // inside the element tag, theres one called key. key=user_id.
       likes {
           _id
           name

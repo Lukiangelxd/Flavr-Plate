@@ -8,9 +8,8 @@ const UserProfile = ({ username }) => {
   const { loading, data } = useQuery(GET_USER, {
     variables: { username },
   });
-
   const user = data?.user || {};
-// List of func, follow links to other posts. Name of liked posts (key=recipe.id), on-click (will need a component [recipe_card]).
+//on-click (will need a component [recipe_card]).
 
   return (
     <div style={{ display: 'flex' }}>
@@ -52,6 +51,28 @@ const UserProfile = ({ username }) => {
           </ListItemButton>
           ))}
         </List>
+        {/* Liked Posts */}
+          <div style={{ flex: 2, padding: '20px' }}>
+           <Typography variant="h5" component="h3">
+             Liked Posts
+          </Typography>
+        <List>
+         {user.likes.map((likedRecipe) => (
+          <ListItemButton key={likedRecipe._id}>
+           <div>
+            <Typography variant="h6" component="div">
+              {likedRecipe.name}
+           </Typography>
+            <p>{likedRecipe.description}</p>
+          {/* Display liked recipe image */}
+           {likedRecipe.image && (
+             <img src={likedRecipe.image} alt={likedRecipe.name} style={{ maxWidth: '100%', height: 'auto' }} />
+          )}
+        </div>
+      </ListItemButton>
+    ))}
+  </List>
+</div>
       </div>
     </div>
   );
