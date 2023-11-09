@@ -10,7 +10,6 @@ import Auth from '../utils/auth';
 import { purple } from '@mui/material/colors';
 
 
-
 function Login() {
     //State will store user data
     const [formData, setFormData] = useState({ 
