@@ -1,0 +1,26 @@
+/* styles.css */
+
+/* First Card */
+.card1 {
+  min-width: 130px;
+}
+
+/* Second Card */
+.card2 {
+  min-width: 120px;
+}
+
+/* Third Card */
+.card3 {
+  min-width: 120px;
+}
+
+/* Fourth Card */
+.card4 {
+  min-width: 120px;
+}
+card-container {
+  display: flex;
+  justify-content: space-around; /* Adjust as needed */
+  padding: 20px; /* Add padding to create space around the cards */
+}
