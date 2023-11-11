@@ -12,11 +12,14 @@ function Signup (){
     const [formData, setFormData] = useState({ 
         email: '', 
         password: '',
-        username: '' 
+        userName: '' 
     });
     const [addUser, { error, data }] = useMutation(CreateUser);
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+      console.log(event.target)
+        const value  = event.target.value;
+        const  name  = event.target.name
+        console.log(name, value)
         setFormData({ ...formData, [name]: value });
     };
     const handleFormSubmit = async (event) => {
@@ -51,22 +54,25 @@ function Signup (){
             <TextField
             required
             id="outlined-required"
+            name="userName"
             label="Required"
-            placeholder="Username"
+            placeholder="username"
             onChange={handleInputChange}
             />
             <TextField
               required
               id="outlined-required"
+              name="email"
               label="Required"
-              placeholder="Email"
+              placeholder="email"
              onChange={handleInputChange}
             />
             <TextField
               required
               id="outlined-required"
+              name="password"
               label="Required"
-              placeholder="Password"
+              placeholder="password"
               onChange={handleInputChange}
             />
             <Button 

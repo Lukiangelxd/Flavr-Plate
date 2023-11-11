@@ -19,7 +19,7 @@ export const GET_RECIPES = gql`
       }
       author {
         _id
-        username
+        userName
       }
       createdAt
       comments {
@@ -27,7 +27,7 @@ export const GET_RECIPES = gql`
         text
         user {
           _id
-          username  # Include the relevant user information
+          userName  
         }
       }
       likes {
@@ -56,7 +56,7 @@ export const GET_SINGLE_RECIPE = gql`
       }
       author {
         _id
-        username
+        userName
       }
       createdAt
       comments {
@@ -64,7 +64,7 @@ export const GET_SINGLE_RECIPE = gql`
         text
         user {
           _id
-          username  # Include the relevant user information
+          userName  
         }
       }
       likes {
@@ -85,10 +85,10 @@ export const GET_CATEGORIES = gql`
 
 
 export const GET_USER = gql`
-  query getUser($username: String!) {
-    user(username: $username) {
+  query getUser($userName: String!) {
+    user(userName: $userName) {
       _id
-      username
+      userName
       email
       recipes {
         _id
@@ -101,7 +101,7 @@ export const GET_USER = gql`
           text
           user {
             _id
-            username  # Include the relevant user information
+            userName  
           }
         }
       }
