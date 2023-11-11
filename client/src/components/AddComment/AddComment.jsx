@@ -9,13 +9,13 @@ import Auth from '../../utils/auth';
 const Add_Comment = ({ recipeId }) => {
   const [comment, setComment] = useState({'comment': ''});
 
-  const [AddComment, { error, data }] = useMutation(AddComment);
+  const [newComment, { error, data }] = useMutation(AddComment);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await AddComment({
+      const { data } = await newComment({
         variables: { recipeId, comment },
       });
 
