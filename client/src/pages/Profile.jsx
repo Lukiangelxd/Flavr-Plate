@@ -40,7 +40,7 @@ const UserProfile = () => {
             <ListItemButton key={recipe._id}>
               <div>
                 <Typography variant="h6" component="div">
-                  <Link to={`/recipe/${recipe._id}`}>{recipe.name}</Link>
+                  <Link to={`/${recipe._id}`}>{recipe.name}</Link>
                 </Typography>
                 <p>{recipe.description}</p>
                  {/* Display recipe image, may need to change if changing list  */}
@@ -67,7 +67,7 @@ const UserProfile = () => {
           <ListItemButton key={likedRecipe._id}>
            <div>
             <Typography variant="h6" component="div">
-            <Link to={`/recipe/${likedRecipe._id}`}>{likedRecipe.name}</Link>
+            <Link to={`/${likedRecipe._id}`}>{likedRecipe.name}</Link>
             </Typography>
             <p>{likedRecipe.description}</p>
           {/* Display liked recipe image */}

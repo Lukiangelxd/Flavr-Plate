@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-//import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-//import { SEARCH_RECIPES } from './PATH;
-//import { useMutation } from '@apollo/client';   
-import { purple } from '@mui/material/colors';
+import {Button, Box, TextField, purple} from '@mui/material';
+import { GET_RECIPES } from './utils/queries';
+import { useQuery } from '@apollo/client';   
+
 
 const SearchBar = ({ onSearch }) => {
     const [search, setSearch] = useState('');
@@ -16,6 +13,18 @@ const SearchBar = ({ onSearch }) => {
   
     const handleSearch = () => {
       onSearch(search);
+
+      const { data, loading, error } = useQuery(GET_RECIPES);
+
+      if (loading) {
+        console.log('Loading...');
+      }
+      if (error) {
+        console.error('Error', error);
+      }
+      if (data) {
+        console.log('Recipes:', data.recipes);
+      }
     };
   
     return (
