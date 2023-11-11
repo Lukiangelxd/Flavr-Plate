@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 function Login() {
   const [formData, setFormData] = useState({
     password: '',
-    userName: '',
+    email: '',
   });
 
   const [loginUser, { error, data }] = useMutation(LOGIN);
@@ -102,9 +102,9 @@ function Login() {
                 margin="normal"
                 required
                 fullWidth
-                name="username"
-                label="Username"
-                autoComplete="username"
+                name="email"
+                label="email"
+                autoComplete="email"
                 autoFocus
                 onChange={handleInputChange}
               />
