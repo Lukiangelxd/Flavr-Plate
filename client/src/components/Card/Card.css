@@ -3,6 +3,8 @@
 /* First Card */
 .card1 {
   min-width: 130px;
+  /* let cards display in the middle of the page */
+  margin-left: 450px;
 }
 
 /* Second Card */
@@ -23,4 +25,5 @@ card-container {
   display: flex;
   justify-content: space-around; /* Adjust as needed */
   padding: 20px; /* Add padding to create space around the cards */
+
 }
