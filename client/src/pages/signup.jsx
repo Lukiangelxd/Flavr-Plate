@@ -1,12 +1,13 @@
+// import dependencies
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { useMutation } from '@apollo/client';
-import { CreateUser } from '../utils/mutations';
+import flavrPlate from '../assets/Flavr Plate logo.jpg';
+import { useMutation } from '@apollo/client'; 
+import { LOGIN } from '../utils/mutations'; 
 import Auth from '../utils/auth';
-import { purple } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from '@mui/material';
+import {Avatar, Button, TextField, Grid, Box, Typography, Container } from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Link } from 'react-router-dom';
 
 function Signup (){
     const [formData, setFormData] = useState({ 
@@ -94,6 +95,6 @@ function Signup (){
         )}
     </main>
   );
-
 }
+
 export default Signup;

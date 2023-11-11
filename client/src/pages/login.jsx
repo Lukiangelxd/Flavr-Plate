@@ -5,18 +5,10 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations'; 
 import Auth from '../utils/auth';
 import { createTheme, ThemeProvider } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import CssBaseline from '@mui/material/CssBaseline';
-import Checkbox from '@mui/material/Checkbox';
-import LinkMui from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import {Avatar, Button, TextField, FormControlLabel, Checkbox, Grid, Box,  Typography, Container} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { Link } from 'react-router-dom';
+
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -153,9 +145,9 @@ function Login() {
                 Sign In
               </Button>
               <Grid item>
-                <LinkMui href="#" variant="body2" sx={{ color: '#B3EBF7', textDecoration: 'none' }}>
-                  {"Don't have an account? Sign Up"}
-                </LinkMui>
+              <Link to="/signup" variant="body2" sx={{ color: '#B3EBF7', textDecoration: 'none' }}>
+                {"Don't have an account? Sign Up"}
+              </Link>
               </Grid>
             </Box>
           </Box>
