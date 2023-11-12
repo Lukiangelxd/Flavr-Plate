@@ -5,6 +5,7 @@ import Login from './pages/login'
 import Signup from './pages/Signup'
 import App from './App.jsx'
 import Error from './pages/Errorpage'
+import Profile from './pages/Profile'
 
 const router = createBrowserRouter([
   {
