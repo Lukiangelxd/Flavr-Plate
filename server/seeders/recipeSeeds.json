@@ -1,0 +1,150 @@
+[
+    {
+        "name": "Homemade tomato pasta",
+        "description": "This is a delicious homemade tomato pasta",
+        "ingredients": [
+            "Tomato sauce",
+            "Tomato",
+            "Pasta",
+            "Olive oil",
+            "Salt",
+            "Pepper",
+            "Basil"
+        ],
+        "instructions": [
+            "1. Boil the pasta",
+            "2. Cut the tomato",
+            "3. Mix the tomato and tomato sauce with the pasta",
+            "4. Add olive oil, salt and pepper",
+            "5. Add basil leaves on top of the pasta and serve"
+        ],
+        "author": "John Doe",
+        "category": "Entree",
+        "createdAt": "2019-11-11T12:00"
+       
+    },
+    {
+        "name": "Homemade cheese cake",
+        "description": "This is a delicious homemade cheese cake",
+        "ingredients": [
+            "Cream cheese",
+            "Sugar",
+            "Eggs",
+            "Butter",
+            "Flour",
+            "Vanilla extract",
+            "Lemon juice",
+            "Sour cream"
+        ],
+        "instructions": [
+            "1. Mix the cream cheese and sugar",
+            "2. Add the eggs, butter, flour, vanilla extract, lemon juice and sour cream",
+            "3. Bake the cake in the oven for 1 hour",
+            "4. Let the cake cool down and serve"
+        ],
+        "author": "Dabbie Downer",
+        "category": "Dessert",
+        "createdAt": "2019-08-11T12:00"
+    },
+    {
+        "name": "ceser salad",
+        "description": "This is a delicious ceser salad",
+        "ingredients": [
+            "Lettuce",
+            "Chicken",
+            "Bread",
+            "Parmesan cheese",
+            "Olive oil",
+            "Salt",
+            "Pepper",
+            "Lemon juice",
+            "Garlic"
+        ],
+        "instructions": [
+            "1. Cut the bread into small pieces and fry them in a pan with olive oil and garlic",
+            "2. Cut the chicken into small pieces and fry them in a pan with olive oil, salt and pepper",
+            "3. Mix the lettuce, chicken, bread and parmesan cheese",
+            "4. Add olive oil, salt, pepper and lemon juice",
+            "5. Serve the salad"
+        ],
+        "author": "Anna Smith",
+        "category": "Appetizer",
+        "createdAt": "2019-10-16T12:00"
+    },
+    {
+        "name": "Butter chicken",
+        "description": "This is a delicious butter chicken",
+        "ingredients": [
+            "Chicken",
+            "Butter",
+            "Tomato sauce",
+            "Cream",
+            "Onion",
+            "Garlic",
+            "Ginger",
+            "Garam masala",
+            "Chili powder",
+            "Salt",
+            "Pepper"
+        ],
+        "instructions": [
+            "1. Cut the chicken into small pieces and fry them in a pan with butter, salt and pepper",
+            "2. Cut the onion, garlic and ginger into small pieces and fry them in a pan with butter",
+            "3. Add the tomato sauce, cream, garam masala, chili powder, salt and pepper",
+            "4. Add the chicken and let it cook for 10 minutes",
+            "5. Serve the butter chicken with rice"
+        ],
+        "author": "John Doe",
+        "category": "Entree",
+        "createdAt": "2019-11-11T12:00"
+    },
+    {
+        "name": "Chocolate cake",
+        "description": "This is a delicious chocolate cake",
+        "ingredients": [
+            "Flour",
+            "Sugar",
+            "Cocoa powder",
+            "Baking powder",
+            "Baking soda",
+            "Eggs",
+            "Milk",
+            "Vegetable oil",
+            "Vanilla extract",
+            "Boiling water"
+        ],
+        "instructions": [
+            "1. Mix the flour, sugar, cocoa powder, baking powder and baking soda",
+            "2. Add the eggs, milk, vegetable oil and vanilla extract",
+            "3. Add the boiling water and mix it all together",
+            "4. Bake the cake in the oven for 30 minutes",
+            "5. Let the cake cool down and serve"
+        ],
+        "author": "Dabbie Downer",
+        "category": "Dessert",
+        "createdAt": "2019-08-11T12:00"
+    },
+    {
+        "name": "Pancakes",
+        "description": "This is a delicious pancake",
+        "ingredients": [
+            "cup Flour",
+            "Sugar",
+            "Baking powder",
+            "Salt",
+            "Milk",
+            "Eggs",
+            "Butter"
+        ],
+        "instructions": [
+            "1. Mix the flour, sugar, baking powder and salt",
+            "2. Add the milk, eggs and butter",
+            "3. Fry the pancakes in a pan with butter",
+            "4. Serve the pancakes with maple syrup"
+        ],
+        "author": "Anna Smith",
+        "category": "Dessert",
+        "createdAt": "2019-10-16T12:00"
+    }
+    
+]
