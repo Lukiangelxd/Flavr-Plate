@@ -1,9 +1,18 @@
 import { Card, CardContent, CardMedia, Typography, List, ListItem, ListItemText } from '@mui/material';
-import queries from '..src/utils/queries';
-
+import { useQuery } from '@apollo/client';
+import { GET_RECIPES } from '../../utils/queries';
 
 const RecipeCard = ({ recipe }) => {
   const { title, description, image, ingredients, instructions, author, comments } = recipe;
+
+  // Use the useQuery hook to execute the GET_RECIPES query
+  const { loading, error, data } = useQuery(GET_RECIPES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  // Access the data returned by the query
+  const recipes = data.recipes;
 
   return (
     <Card sx={{ maxWidth: 600, margin: 'auto', marginTop: 4 }}>
