@@ -25,7 +25,7 @@ const resolvers = {
         },
         user: async (parent, args, context) => {
             if (context.user) {
-              const user = await User.findById(context.user._id).populate(['likes', 'recipes', 'comments']);
+              const user = await User.findById({_id: context.user._id}).populate(['likedRecipes', 'recipes', 'comments']);
               return user;
             }
         },

@@ -102,9 +102,9 @@ function Login() {
                 margin="normal"
                 required
                 fullWidth
-                name="username"
-                label="Username"
-                autoComplete="username"
+                name="email"
+                label="email"
+                autoComplete="email"
                 autoFocus
                 onChange={handleInputChange}
               />

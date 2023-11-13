@@ -4,7 +4,7 @@ export const GET_RECIPES = gql`
   query getRecipes {
     recipes {
       _id
-      title
+      name
       description
       image
       ingredients {
@@ -13,7 +13,7 @@ export const GET_RECIPES = gql`
         amount
       }
       instructions
-      category {
+      categories {
         _id
         name
       }
@@ -41,7 +41,7 @@ export const GET_SINGLE_RECIPE = gql`
   query getSingleRecipe($recipeId: ID!) {
     recipe(recipeId: $recipeId) {
       _id
-      title
+      name
       description
       image
       ingredients {
@@ -50,7 +50,7 @@ export const GET_SINGLE_RECIPE = gql`
         amount
       }
       instructions
-      category {
+      categories {
         _id
         name
       }
@@ -85,8 +85,8 @@ export const GET_CATEGORIES = gql`
 
 
 export const GET_USER = gql`
-  query getUser($userName: String!) {
-    user(userName: $userName) {
+  query getUser {
+    user {
       _id
       userName
       email
@@ -105,8 +105,7 @@ export const GET_USER = gql`
           }
         }
       }
-      // inside the element tag, theres one called key. key=user_id.
-      likes {
+      likedRecipes {
           _id
           name
           image
@@ -115,5 +114,4 @@ export const GET_USER = gql`
       createdAt
       }
     }
-  }
 `;
