@@ -7,107 +7,55 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './Card.css';
 
+const cardContainerStyle = {
+  width: '200px', // You can adjust the width as needed
+  height: '100%', // You can adjust the height as needed
+  margin: '0 10px', // Add some margin between cards
+};
+
+const cardStyle = {
+  mt: 3,
+  mb: 2,
+  backgroundColor: 'white',
+  fontFamily: 'Segoe UI, sans-serif',
+  '&:hover': {
+    backgroundColor: 'white',
+    transition: '0.1s',
+    transform: 'scale(1.05)',
+  },
+  '&:active': {
+    backgroundColor: 'white',
+    transform: 'scale(2.0)',
+  },
+};
+
 export default function BasicCard() {
   return (
     <Box sx={{ display: 'flex', gap: 2 }}>
       {/* First Card */}
-      <Card className="card1">
-      <Card sx={{ minWidth: 130 }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="div">
-            be 
-            {/* add some text here */}
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
-          </Typography>
-          <Typography variant="body2">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
+      <Card className="card1" sx={cardContainerStyle}>
+        <Card sx={cardStyle}>
+          <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Word of the Day
+            </Typography>
+            <Typography variant="h5" component="div">
+              be 
+              {/* add some text here */}
+            </Typography>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              adjective
+            </Typography>
+            <Typography variant="body2">
+              well meaning and kindly.
+              <br />
+              {'"a benevolent smile"'}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Learn More</Button>
+          </CardActions>
         </Card>
-      {/* Second Card */}
-      <Card sx={{ minWidth: 120 }}>
-      <Card className="card2">
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Another Word of the Day
-          </Typography>
-          <Typography variant="h5" component="div">
-            example
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            noun
-          </Typography>
-          <Typography variant="body2">
-            a representative form or pattern.
-            <br />
-            {'"an example of good design"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-      </Card>
-
-      {/* Third Card */}
-      <Card sx={{ minWidth: 120 }}>
-      <Card className="card3">
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Another Word of the Day
-          </Typography>
-          <Typography variant="h5" component="div">
-            example
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            noun
-          </Typography>
-          <Typography variant="body2">
-            a representative form or pattern.
-            <br />
-            {'"an example of good design"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-      </Card>
-
-      {/* Fourth Card */}
-      <Card className="card4">
-      <Card sx={{ minWidth: 120 }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Another Word of the Day
-          </Typography>
-          <Typography variant="h5" component="div">
-            example
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            noun
-          </Typography>
-          <Typography variant="body2">
-            a representative form or pattern.
-            <br />
-            {'"an example of good design"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
       </Card>
     </Box>
   );

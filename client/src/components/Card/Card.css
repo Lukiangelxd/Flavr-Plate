@@ -4,26 +4,36 @@
 .card1 {
   min-width: 130px;
   /* let cards display in the middle of the page */
-  margin-left: 450px;
+  margin-left: 450px;3
 }
 
-/* Second Card */
-.card2 {
-  min-width: 120px;
+/* Small screens (e.g., phones) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
 }
 
-/* Third Card */
-.card3 {
-  min-width: 120px;
+/* Medium screens (e.g., tablets) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    font-size: 16px;
+  }
 }
 
-/* Fourth Card */
-.card4 {
-  min-width: 120px;
+/* Large screens (e.g., desktops) */
+@media only screen and (min-width: 901px) {
+  body {
+    font-size: 18px;
+  }
 }
 card-container {
   display: flex;
   justify-content: space-around; /* Adjust as needed */
   padding: 20px; /* Add padding to create space around the cards */
-
 }
