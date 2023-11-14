@@ -7,25 +7,49 @@ const resolvers = {
             return await Category.find();
         },
         recipes: async (parent, { query }) => {
-            const params = {};
-          
-            if (query) {
-              // Use a $or operator to search across multiple fields
-              params.$or = [
-                { name: { $regex: query, $options: 'i' } }, // Recipe name search
-                { 'ingredients.name': { $regex: query, $options: 'i' } }, // Ingredient name search
-                { 'categories.name': { $regex: query, $options: 'i' } }, // Category name search
-              ];
-            }
-          
-            return await Recipe.find(params).populate('categories').populate('ingredients');
+          if (!query) {
+            // If no query is provided, return all recipes
+            const recipes = await Recipe.find().populate('categories').populate('ingredients');
+            return recipes;
+          }
+        
+          const regexQuery = { $regex: query, $options: 'i' };
+        
+          // Search for categories with matching names
+          const matchingCategories = await Category.find({ name: regexQuery });
+        
+          // Search for ingredients with matching names
+          const matchingIngredients = await Ingredient.find({ name: regexQuery });
+        
+          // Get the IDs of matching categories and ingredients
+          const categoryIds = matchingCategories.map(category => category._id);
+          const ingredientIds = matchingIngredients.map(ingredient => ingredient._id);
+        
+          // Search for recipes based on name, ingredient name, or category name
+          const recipes = await Recipe.find({
+            $or: [
+              { name: regexQuery }, // Recipe name search
+              { 'ingredients.name': regexQuery }, // Ingredient name search
+              { 'categories.name': regexQuery }, // Category name search
+              { 'ingredients': { $in: ingredientIds } }, // Recipes with matching ingredients
+              { 'categories': { $in: categoryIds } }, // Recipes with matching categories
+            ],
+          }).populate('categories').populate('ingredients').populate('author').populate({
+            path: 'comments',
+            populate: {
+              path: 'author',
+              model: 'User', 
+            },
+          })
+        
+          return recipes;
         },
         recipe: async (parent, {_id}) => {
             return await Recipe.findById(_id).populate(['categories', 'ingredients', 'comments']);
         },
         user: async (parent, args, context) => {
             if (context.user) {
-              const user = await User.findById(context.user._id).populate(['likes', 'recipes', 'comments']);
+              const user = await User.findById({_id: context.user._id}).populate(['likedRecipes', 'recipes', 'comments']);
               return user;
             }
         },
@@ -39,6 +63,7 @@ const resolvers = {
         },
         createRecipe: async (parent, { input }, context) => {
             const { user } = context;
+            console.log('Input:', input);
           
             if (!user) {
               throw new AuthenticationError('You must be logged in to create a recipe.');
@@ -46,17 +71,22 @@ const resolvers = {
           
             try {
               const { name, description, image, instructions, categories, ingredients } = input;
-          
+              
               // Create an array to store the category IDs
               const categoryIds = [];
               for (const categoryData of categories) {
-                const existingCategory = await Category.findOne({ name: categoryData.name });
-          
+                const obj = { ...categoryData }
+                console.log(categoryData)
+                console.log(obj)
+                const existingCategory = await Category.findOne({ name: obj.name });
+                console.log(existingCategory)
                 if (existingCategory) {
                   categoryIds.push(existingCategory._id);
                 } else {
                   // Create a new category if it doesn't exist
-                  const newCategory = await Category.create({ name: categoryData.name });
+                  const newCategory = await Category.create({ name: obj.name });
+                  console.log("New category")
+                  console.log(newCategory)
                   categoryIds.push(newCategory._id);
                 }
               }
@@ -64,13 +94,18 @@ const resolvers = {
               // Create an array to store the ingredient IDs
               const ingredientIds = [];
               for (const ingredientData of ingredients) {
-                const existingIngredient = await Ingredient.findOne({ name: ingredientData.name });
+                console.log(ingredientData)
+                const obj = { ...ingredientData }
+                console.log(obj)
+                const existingIngredient = await Ingredient.findOne({ name: obj.name });
           
                 if (existingIngredient) {
                   ingredientIds.push(existingIngredient._id);
                 } else {
                   // Create a new ingredient if it doesn't exist
-                  const newIngredient = await Ingredient.create({ name: ingredientData.name });
+                  const newIngredient = await Ingredient.create({ name: obj.name,
+                  amount: ingredientData.amount });
+                  console.log(newIngredient)
                   ingredientIds.push(newIngredient._id);
                 }
               }
@@ -85,8 +120,9 @@ const resolvers = {
                 categories: categoryIds,
                 ingredients: ingredientIds,
               });
-          
-              return recipe;
+              console.log('Output:', recipe);
+              const toReturn = await Recipe.findOne({_id: recipe._id}).populate(['categories', 'ingredients'])
+              return toReturn;
             } catch (err) {
               throw new Error('Error creating the recipe: ' + err.message);
             }

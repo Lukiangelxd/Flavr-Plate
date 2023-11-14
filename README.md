@@ -23,11 +23,11 @@ Please View our Website [HERE]()
 
 ### Meet the Developers
 
-- **[Hailey](https://github.com/hailey-strauss)**: Front End Developer: Focused on
-- **[Zach](https://github.com/zach-hoover)**: Back End Developer: Focused on
-- **[Hannah](https://github.com/Lukiangelxd)** Front End/Project Coordinator: Focused on
-- **[Lin](https://github.com/YJRose)** Back End Developer: Focused on
-- **[Giselle](https://github.com/gmtzz)**  Front End Developer: Focused on
+- **[Hailey](https://github.com/hailey-strauss)**: Front End Developer: Focused on Category Header
+- **[Zach](https://github.com/zach-hoover)**: Back End Developer: Focused on Debugging and Majority of the Back End Coding
+- **[Hannah](https://github.com/Lukiangelxd)** Front End/Project Coordinator: Focused on Header, Login/SignUp and the development of the Recipe Card. 
+- **[Lin](https://github.com/YJRose)** Back End Developer: Focused on Assisting with Back End Coding
+- **[Giselle](https://github.com/gmtzz)**  Front End Developer: Focused on the Search bar
 
 ## Features
 

@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const GET_RECIPES = gql`
-  query getRecipes {
-    recipes {
+  query getRecipes($query: String!) {
+    recipes(query: $query) {
       _id
-      title
+      name
       description
       image
       ingredients {
@@ -13,21 +13,21 @@ export const GET_RECIPES = gql`
         amount
       }
       instructions
-      category {
+      categories {
         _id
         name
       }
       author {
         _id
-        username
+        userName
       }
       createdAt
       comments {
         _id
         text
-        user {
+        author {
           _id
-          username  # Include the relevant user information
+          userName  
         }
       }
       likes {
@@ -41,7 +41,7 @@ export const GET_SINGLE_RECIPE = gql`
   query getSingleRecipe($recipeId: ID!) {
     recipe(recipeId: $recipeId) {
       _id
-      title
+      name
       description
       image
       ingredients {
@@ -50,13 +50,13 @@ export const GET_SINGLE_RECIPE = gql`
         amount
       }
       instructions
-      category {
+      categories {
         _id
         name
       }
       author {
         _id
-        username
+        userName
       }
       createdAt
       comments {
@@ -64,7 +64,7 @@ export const GET_SINGLE_RECIPE = gql`
         text
         user {
           _id
-          username  # Include the relevant user information
+          userName  
         }
       }
       likes {
@@ -85,10 +85,10 @@ export const GET_CATEGORIES = gql`
 
 
 export const GET_USER = gql`
-  query getUser($username: String!) {
-    user(username: $username) {
+  query getUser {
+    user {
       _id
-      username
+      userName
       email
       recipes {
         _id
@@ -101,12 +101,11 @@ export const GET_USER = gql`
           text
           user {
             _id
-            username  # Include the relevant user information
+            userName  
           }
         }
       }
-      // inside the element tag, theres one called key. key=user_id.
-      likes {
+      likedRecipes {
           _id
           name
           image
@@ -115,5 +114,4 @@ export const GET_USER = gql`
       createdAt
       }
     }
-  }
 `;

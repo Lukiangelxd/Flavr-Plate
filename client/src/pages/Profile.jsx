@@ -10,12 +10,13 @@ const UserProfile = () => {
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const [userData, setUserData] = useState({});
   const { data, loading, error } = useQuery(GET_USER, {
-    variables: { token },
+    variables:  token ,
     skip: !token, 
   });
   useEffect(() => {
     if (data) {
       setUserData(data);
+      console.log(userData)
     }
   }, [data]);
   return (
@@ -25,7 +26,7 @@ const UserProfile = () => {
         <Paper elevation={3} style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           {/* Users name */}
           <Typography variant="h5" component="div" sx={{ marginTop: 2 }}>
-            {userData.username}
+            {userData.userName}
           </Typography>
         </Paper>
       </div>
@@ -40,7 +41,7 @@ const UserProfile = () => {
             <ListItemButton key={recipe._id}>
               <div>
                 <Typography variant="h6" component="div">
-                  <Link to={`/recipe/${recipe._id}`}>{recipe.name}</Link>
+                  <Link to={`/${recipe._id}`}>{recipe.name}</Link>
                 </Typography>
                 <p>{recipe.description}</p>
                  {/* Display recipe image, may need to change if changing list  */}
@@ -50,7 +51,7 @@ const UserProfile = () => {
                 {/* Display recipe comments if available */}
                 {recipe.comments.map((comment) => (
                   <div key={comment._id}>
-                    <p>Comment by {comment.user.username}: {comment.text}</p>
+                    <p>Comment by {comment.user.userName}: {comment.text}</p>
                   </div>
           ))}
           </div>
@@ -63,11 +64,11 @@ const UserProfile = () => {
              Liked Posts
           </Typography>
         <List>
-         {userData.likes.map((likedRecipe) => (
+         {userData.likedRecipes.map((likedRecipe) => (
           <ListItemButton key={likedRecipe._id}>
            <div>
             <Typography variant="h6" component="div">
-            <Link to={`/recipe/${likedRecipe._id}`}>{likedRecipe.name}</Link>
+            <Link to={`/${likedRecipe._id}`}>{likedRecipe.name}</Link>
             </Typography>
             <p>{likedRecipe.description}</p>
           {/* Display liked recipe image */}

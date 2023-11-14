@@ -1,95 +1,160 @@
-//import dependencies
-import{ useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+// import dependencies
+import { useState } from 'react';
+import flavrPlate from '../assets/Flavr Plate logo.jpg';
 import { useMutation } from '@apollo/client'; 
 import { LOGIN } from '../utils/mutations'; 
 import Auth from '../utils/auth';
-import { purple } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from '@mui/material';
+import {Avatar, Button, TextField, FormControlLabel, Checkbox, Grid, Box,  Typography, Container} from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Link } from 'react-router-dom';
 
 
 function Login() {
-    //State will store user data
-    const [formData, setFormData] = useState({ 
-        password: '',
-        username: '',
-    });
-    const [loginUser, { error,data }] = useMutation(LOGIN);
-    //function to handle input changes
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-    };
-    //Form Submission function
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const { data } = await loginUser({
-              variables: { ...formData },
-            });
-      
-            Auth.login(data.login.token);
-          } catch (err) {
-            console.error(err);
-          }
-        };
-    return (
-        <main className="flex-row justify-center mb-4">
-        {data ? (
-          <p>
-            Success! You are now logged in.{' '}
-            <Link to="/">back to the homepage.</Link>
-          </p>
-        ) : (
-            <Box
-          component="form"
+  const [formData, setFormData] = useState({
+    password: '',
+    email: '',
+  });
+
+  const [loginUser, { error, data }] = useMutation(LOGIN);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await loginUser({
+        variables: { ...formData },
+      });
+
+      Auth.login(data.login.token);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const defaultTheme = createTheme();
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <Box display="flex" height="100vh">
+        {/* Container on the left (image) */}
+        <Container
           sx={{
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#ececec', 
+            flex: 1, 
           }}
-          noValidate
-          autoComplete="off"
-          onSubmit={handleFormSubmit}
-            >
-        <TextField
-            required
-            id="outlined-required-email"
-            label="Email"
-            name="email"
-            placeholder="Email"
-            onChange={handleInputChange}
+        >
+          {/* Square */}
+          <img
+            src={flavrPlate} // Replace with the URL of your square image
+            alt="Flavr Plate Logo"
+            style={{ width: '100%', height: 'auto', maxWidth: '600px', maxHeight: '600px' }}
           />
-          <TextField
-            required
-            id="outlined-required-password"
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleInputChange}
-          />
-          <Button
-            variant="contained"
+        </Container>
+
+        {/* Container on the right (login form) */}
+        <Container
+          component="main"
+          maxWidth="xs"
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flex: 1,
+          }}
+        >
+          <Box
             sx={{
-            color: (theme) => theme.palette.getContrastText(purple[500]),
-            backgroundColor: purple[500],
-            '&:hover': {
-            backgroundColor: purple[700],
-            },
-        }}
-            type="submit">Login</Button>
-        </Box>
-      )}
-      {error && (
-            <div className="my-3 p-3 bg-danger text-white">{error.message}
-            </div>
-        )}
-    </main>
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar
+              sx={{
+                m: 1,
+                bgcolor: '#B3EBF7',
+                color: 'white',
+              }}
+            >
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{ color: '#D8A79D', fontFamily: 'Segoe Script', fontSize: '32px', fontWeight: 'bold' }}
+            >
+              Sign in
+            </Typography>
+
+            <Box component="form" onSubmit={handleFormSubmit} noValidate sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="email"
+                label="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleInputChange}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                autoComplete="current-password"
+                onChange={handleInputChange}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: '#4CAF50',
+                  fontFamily: 'Segoe UI, sans-serif',
+                  '&:hover': {
+                    backgroundColor: '#F7D1C3',
+                    transition: '0.5s',
+                    transform: 'scale(1.05)',
+                  },
+                  '&:active': {
+                    backgroundColor: '#C48172',
+                    transform: 'scale(0.95)',
+                  },
+                }}
+              >
+                Sign In
+              </Button>
+              <Grid item>
+              <Link to="/signup" variant="body2" sx={{ color: '#B3EBF7', textDecoration: 'none' }}>
+                {"Don't have an account? Sign Up"}
+              </Link>
+              </Grid>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 }
 
 export default Login;
-
-
-

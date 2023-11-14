@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.14",
+    "@apollo/client": "^3.8.7",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.17",
@@ -19,6 +19,7 @@
     "bootstrap": "^5.2.3",
     "graphql": "^16.8.1",
     "jwt-decode": "^3.1.2",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
