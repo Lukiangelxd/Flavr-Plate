@@ -1,29 +1,37 @@
-/* styles.css */
-
-/* First Card */
-.card1 {
+.card2 {
   min-width: 130px;
-  /* let cards display in the middle of the page */
   margin-left: 450px;
 }
-
-/* Second Card */
-.card2 {
-  min-width: 120px;
-}
-
-/* Third Card */
-.card3 {
-  min-width: 120px;
-}
-
-/* Fourth Card */
-.card4 {
-  min-width: 120px;
-}
-card-container {
+.card-container {
   display: flex;
   justify-content: space-around; /* Adjust as needed */
   padding: 20px; /* Add padding to create space around the cards */
+}
 
+/* Responsive styles using media queries */
+
+/* Small screens (e.g., phones) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Medium screens (e.g., tablets) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Large screens (e.g., desktops) */
+@media only screen and (min-width: 901px) {
+  body {
+    font-size: 18px;
+  }
 }

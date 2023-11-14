@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 function Login() {
   const [formData, setFormData] = useState({
     password: '',
-    userName: '',
+    email: '',
   });
 
   const [loginUser, { error, data }] = useMutation(LOGIN);

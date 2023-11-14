@@ -11,7 +11,16 @@
             "Pepper",
             "Basil"
         ],
+
         "instructions":  "1. Boil the pasta, 2. Cut the tomato, 3. Mix the tomato and tomato sauce with the pasta, 4. Add olive oil, salt and pepper,5. Add basil leaves on top of the pasta and serve" ,
+
+        "instructions": [
+            "1. Boil the pasta",
+            "2. Cut the tomato",
+            "3. Mix the tomato and tomato sauce with the pasta",
+            "4. Add olive oil, salt and pepper",
+            "5. Add basil leaves on top of the pasta and serve"
+        ],
         "author": "John Doe",
         "category": "Entree",
         "createdAt": "2019-11-11T12:00"
@@ -36,4 +45,3 @@
         "category": "Dessert",
         "createdAt": "2019-08-11T12:00"
     }
-]

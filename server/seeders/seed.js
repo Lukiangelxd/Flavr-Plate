@@ -1,7 +1,10 @@
 const db = require('../config/connection');
 const { Recipe } = require('../models');
 const recipeSeeds = require('./recipeSeeds.json');
+
 const cleanDB = require('../config/cleanDB');
+const cleanDB = require('./cleanDB');
+
 
 db.once('open', async () => {
   try {
