@@ -8,6 +8,7 @@ const typeDefs = `
     _id: ID
     text: String!
     likes: [User]
+    author: User
   }
 
   type Ingredient{
@@ -27,7 +28,7 @@ const typeDefs = `
   }
 
   type Recipe {
-    id: ID
+    _id: ID
     name: String!
     description: String!
     image: String

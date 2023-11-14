@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_RECIPES = gql`
-  query getRecipes {
-    recipes {
+  query getRecipes($query: String!) {
+    recipes(query: $query) {
       _id
       name
       description
@@ -25,7 +25,7 @@ export const GET_RECIPES = gql`
       comments {
         _id
         text
-        user {
+        author {
           _id
           userName  
         }
