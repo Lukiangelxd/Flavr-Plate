@@ -11,7 +11,7 @@ const recipeForm = () => {
     description: '',
     image: '',
     instructions: '',
-    category: '', //fetch categories and populate dropdown
+    category: '', 
   });
 
   const [addRecipe, { error }] = useMutation(CreateRecipe);
@@ -106,9 +106,9 @@ const recipeForm = () => {
         onChange={handleInputChange}
       >
         
-        <MenuItem value="breakfast">Category 1</MenuItem>
-        <MenuItem value="lunch">Category 2</MenuItem>
-        <MenuItem value="dinner">Category 3</MenuItem>
+        <MenuItem value="breakfast">breakfast</MenuItem>
+        <MenuItem value="lunch">lunch</MenuItem>
+        <MenuItem value="dinner">dinner</MenuItem>
       </TextField>
 
       <Button type="submit" variant="contained" color="primary">
