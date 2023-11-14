@@ -1,11 +1,14 @@
-/* styles.css */
-
-/* First Card */
-.card1 {
-  min-width: 130px;
-  /* let cards display in the middle of the page */
-  margin-left: 450px;3
+.card2 {
+  min-width: 120px;
+  margin-left: 450px;
 }
+card-container {
+  display: flex;
+  justify-content: space-around; /* Adjust as needed */
+  padding: 20px; /* Add padding to create space around the cards */
+}
+
+/* Responsive styles using media queries */
 
 /* Small screens (e.g., phones) */
 @media only screen and (max-width: 600px) {
@@ -31,9 +34,4 @@
   body {
     font-size: 18px;
   }
-}
-card-container {
-  display: flex;
-  justify-content: space-around; /* Adjust as needed */
-  padding: 20px; /* Add padding to create space around the cards */
 }

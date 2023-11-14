@@ -32,31 +32,30 @@ const cardStyle = {
 export default function BasicCard() {
   return (
     <Box sx={{ display: 'flex', gap: 2 }}>
-      {/* First Card */}
-      <Card className="card1" sx={cardContainerStyle}>
-        <Card sx={cardStyle}>
-          <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-              be 
-              {/* add some text here */}
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
+  
+      {/* Second Card */}
+      
+      <Card sx={{ minWidth: 130 }}>
+      <Card className="card2" sx={cardStyle}>
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Another Word of the Day
+          </Typography>
+          <Typography variant="h5" component="div">
+            example
+          </Typography>
+          <Typography variant="body2">
+            a representative form or pattern.
+            <br />
+            {'"an example of good design"'}
+          </Typography>
+        </CardContent>
+        <CardActions>
+        <Button size="small">Learn More</Button>
+        </CardActions>
       </Card>
+      </Card>
+
     </Box>
   );
 }
