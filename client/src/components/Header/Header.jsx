@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
 import '../Header/Header.css';
 import Auth from '../../utils/auth';
+import flavrPlate from '../../assets/Flavr Plate logo.jpg';
 
 
 
@@ -12,7 +13,7 @@ function Header() {
       <AppBar position="static" style={{ backgroundColor: '#D8A79D', backdropFilter: 'blur(10px)' }}>
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu">
-            <img src="../../assets/images/logo.png" alt="logo" className="logo" />
+            <img src={flavrPlate} alt="logo" className="logo" />
           </IconButton>
           <Typography variant="h6" component="div" className="company-name">
             <span style={{ fontFamily: 'Segoe Script', fontSize: '32px', fontWeight: 'bold' }}>Flavr Plate</span>
@@ -64,7 +65,7 @@ function Header() {
       <AppBar position="static" style={{ backgroundColor: '#D8A79D', backdropFilter: 'blur(10px)' }}>
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu">
-            <img src="https://user-images.githubusercontent.com/133689246/281239100-44f2fe44-0205-4b11-9770-555a45919dd7.jpg" alt="logo" className="logo" />
+            <img src={flavrPlate} alt="logo" className="logo" />
           </IconButton>
           <Typography variant="h6" component="div" className="company-name">
             <span style={{ fontFamily: 'Segoe Script', fontSize: '32px', fontWeight: 'bold' }}>Flavr Plate</span>
