@@ -14,7 +14,9 @@ const SearchBar = ({ onSearch }) => {
     const handleSearch = () => {
       onSearch(search);
 
-      const { data, loading, error } = useQuery(GET_RECIPES);
+      const { data, loading, error } = useQuery( GET_RECIPES, {
+        variables : search
+      });
 
       if (loading) {
         console.log('Loading...');
