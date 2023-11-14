@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CreateRecipe, GET_RECIPES } from './utils/mutations';
+import {Box, TextField, MenuItem} from '@mui/material';
+
+
 
 const recipeForm = () => {
   const [recipeData, setRecipeData] = useState({
@@ -42,46 +45,78 @@ const recipeForm = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      
-      <label>Name:</label>
-      <input
-        type="text"
+    <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      noValidate
+      autoComplete="off"
+      onSubmit={handleFormSubmit}
+    >
+      <TextField
+        id="outlined-name"
+        label="Name"
+        variant="outlined"
         name="name"
         value={recipeData.name}
         onChange={handleInputChange}
       />
-       <label>Description:</label>
-      <textarea
+
+      <TextField
+        id="outlined-description"
+        label="Description"
+        multiline
+        rows={4}
+        variant="outlined"
         name="description"
         value={recipeData.description}
         onChange={handleInputChange}
       />
-      <label>Image URL:</label>
-      <input
-        type="text"
+
+      <TextField
+        id="outlined-image"
+        label="Image URL"
+        variant="outlined"
         name="image"
         value={recipeData.image}
         onChange={handleInputChange}
       />
-      <label>Instructions:</label>
-      <textarea
+
+      <TextField
+        id="outlined-instructions"
+        label="Instructions"
+        multiline
+        rows={4}
+        variant="outlined"
         name="instructions"
         value={recipeData.instructions}
         onChange={handleInputChange}
       />
-      <label>Category:</label>
-      <input
-        type="text"
+
+      <TextField
+        id="outlined-select-category"
+        select
+        label="Select Category"
+        variant="outlined"
         name="category"
         value={recipeData.category}
         onChange={handleInputChange}
-      />
+      >
+        
+        <MenuItem value="breakfast">Category 1</MenuItem>
+        <MenuItem value="lunch">Category 2</MenuItem>
+        <MenuItem value="dinner">Category 3</MenuItem>
+      </TextField>
 
-      <button type="submit">Submit</button>
+      <Button type="submit" variant="contained" color="primary">
+        Submit
+      </Button>
 
       {error && <p>Error: {error.message}</p>}
-    </form>
+    </Box>
   );
 };
 
