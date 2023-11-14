@@ -25,7 +25,7 @@ const resolvers = {
         },
         user: async (parent, args, context) => {
             if (context.user) {
-              const user = await User.findById(context.user._id).populate(['likes', 'recipes', 'comments']);
+              const user = await User.findById({_id: context.user._id}).populate(['likedRecipes', 'recipes', 'comments']);
               return user;
             }
         },
@@ -39,6 +39,7 @@ const resolvers = {
         },
         createRecipe: async (parent, { input }, context) => {
             const { user } = context;
+            console.log('Input:', input);
           
             if (!user) {
               throw new AuthenticationError('You must be logged in to create a recipe.');
@@ -46,10 +47,13 @@ const resolvers = {
           
             try {
               const { name, description, image, instructions, categories, ingredients } = input;
-          
+              
               // Create an array to store the category IDs
               const categoryIds = [];
               for (const categoryData of categories) {
+                const obj = Object.assign({},categoryData)
+                console.log(categoryData)
+                console.log(obj)
                 const existingCategory = await Category.findOne({ name: categoryData.name });
           
                 if (existingCategory) {
@@ -57,6 +61,7 @@ const resolvers = {
                 } else {
                   // Create a new category if it doesn't exist
                   const newCategory = await Category.create({ name: categoryData.name });
+                  console.log(newCategory)
                   categoryIds.push(newCategory._id);
                 }
               }
@@ -64,13 +69,16 @@ const resolvers = {
               // Create an array to store the ingredient IDs
               const ingredientIds = [];
               for (const ingredientData of ingredients) {
+                console.log(ingredientData)
                 const existingIngredient = await Ingredient.findOne({ name: ingredientData.name });
           
                 if (existingIngredient) {
                   ingredientIds.push(existingIngredient._id);
                 } else {
                   // Create a new ingredient if it doesn't exist
-                  const newIngredient = await Ingredient.create({ name: ingredientData.name });
+                  const newIngredient = await Ingredient.create({ name: ingredientData.name,
+                  amount: ingredientData.amount });
+                  console.log(newIngredient)
                   ingredientIds.push(newIngredient._id);
                 }
               }
@@ -85,6 +93,7 @@ const resolvers = {
                 categories: categoryIds,
                 ingredients: ingredientIds,
               });
+              console.log('Output:', recipe);
           
               return recipe;
             } catch (err) {

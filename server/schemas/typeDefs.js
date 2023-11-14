@@ -22,7 +22,7 @@ const typeDefs = `
     email: String!
     password: String!
     recipes: [Recipe]
-    likes: [User]
+    likedRecipes: [Recipe]
     comments: [Comment]
   }
 

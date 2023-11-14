@@ -25,20 +25,26 @@ export const DeleteUser = gql`
     `;
 
 export const CreateRecipe = gql`
-    mutation addRecipe($recipeData: RecipeInput!) {
-        addRecipe(recipeData: $recipeData) {
-            _id
-            userName
-            email
-            savedRecipes {
-                recipeId
-                name
-                image
-                sourceUrl
-            }
+    mutation createRecipe($input: RecipeInput!) {
+      createRecipe(input: $input) {
+        _id
+        name
+        description
+        image
+        instructions
+        author {
+          _id
         }
+        categories {
+          name
+        }
+        ingredients {
+          name
+          amount
+        }
+      }
     }
-    `;
+  `;
 
 export const DeleteRecipe = gql`
     mutation deleteRecipe($recipeId: String!) {
