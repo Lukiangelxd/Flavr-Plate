@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {Button, Box, TextField, purple} from '@mui/material';
-import { GET_RECIPES } from './utils/queries';
+import {Button, Box, TextField} from '@mui/material';
+import { GET_RECIPES } from '../../utils/queries.js';
 import { useQuery } from '@apollo/client';   
 
 
@@ -50,11 +50,11 @@ const SearchBar = ({ onSearch }) => {
         <Button
           variant="contained"
           sx={{
-            color: (theme) => theme.palette.getContrastText(purple[500]),
-            backgroundColor: purple[500],
+            color: (theme) => theme.palette.getContrastText(theme.palette.primary.main),
+            backgroundColor: 'purple', // Use 'purple' directly instead of purple[500]
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
             '&:hover': {
-              backgroundColor: purple[700],
+              backgroundColor: 'purple', // Use 'purple' directly instead of purple[700]
             },
           }}
           onClick={handleSearch}
