@@ -24,6 +24,7 @@
     "@mui/material": "^5.14.17",
     "@mui/styled-engine-sc": "^6.0.0-alpha.5",
     "jwt-decode": "^4.0.0",
-    "styled-components": "^6.1.0"
+    "styled-components": "^6.1.0",
+    "typescript": "^5.2.2"
   }
 }

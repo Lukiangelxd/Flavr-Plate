@@ -34,7 +34,13 @@ const resolvers = {
               { 'ingredients': { $in: ingredientIds } }, // Recipes with matching ingredients
               { 'categories': { $in: categoryIds } }, // Recipes with matching categories
             ],
-          }).populate('categories').populate('ingredients');
+          }).populate('categories').populate('ingredients').populate('author').populate({
+            path: 'comments',
+            populate: {
+              path: 'author',
+              model: 'User', 
+            },
+          })
         
           return recipes;
         },
