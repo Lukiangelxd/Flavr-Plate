@@ -3,10 +3,11 @@ import {Button, Box, TextField} from '@mui/material';
 import { GET_RECIPES } from '../../utils/queries';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { useLazyQuery } from '@apollo/client';
+import PropTypes from 'prop-types';
 
 
 
-const SearchBar = () => {
+const SearchBar = ({ onSearchResult }) => {
   
     const [search, setSearch] = useState({ query: ''});
   
@@ -29,6 +30,7 @@ const SearchBar = () => {
         }
         if (result) {
           console.log('Recipes:', result);
+          onSearchResult(result.data.recipes);
         }
         
       } catch (error) {
@@ -82,6 +84,10 @@ const SearchBar = () => {
       </Box>
       </ThemeProvider>
     );
+  };
+
+  SearchBar.propTypes = {
+    onSearchResult: PropTypes.func.isRequired,
   };
   
   export default SearchBar;
