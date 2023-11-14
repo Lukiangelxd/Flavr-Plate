@@ -1,8 +1,8 @@
 .card2 {
-  min-width: 120px;
+  min-width: 130px;
   margin-left: 450px;
 }
-card-container {
+.card-container {
   display: flex;
   justify-content: space-around; /* Adjust as needed */
   padding: 20px; /* Add padding to create space around the cards */

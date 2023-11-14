@@ -35,7 +35,7 @@ export default function BasicCard() {
   
       {/* Second Card */}
       
-      <Card sx={{ minWidth: 130 }}>
+      {/* <Card sx={{ minWidth: 130 }}> */}
       <Card className="card2" sx={cardStyle}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -53,7 +53,6 @@ export default function BasicCard() {
         <CardActions>
         <Button size="small">Learn More</Button>
         </CardActions>
-      </Card>
       </Card>
 
     </Box>
