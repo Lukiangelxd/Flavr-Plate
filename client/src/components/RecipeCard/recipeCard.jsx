@@ -1,11 +1,35 @@
-import { Card, CardContent, CardMedia, Typography, List, ListItem, ListItemText } from '@mui/material';
+import React, { useState } from 'react';
+import { Card, CardContent, CardMedia, Typography, List, ListItem, ListItemText, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const RecipeCard = ({ recipe }) => {
-  console.log(recipe);
   const { name, description, image, ingredients, instructions, author, comments, likes } = recipe;
-  //implement usestate logic for like count and add like mutation
-  //do same thing for commenting 
+
+  // Likes
+  const [likeCount, setLikeCount] = useState(likes.length);
+
+  // Comments
+  const [commentText, setCommentText] = useState('');
+  const [commentList, setCommentList] = useState(comments);
+
+  const handleLike = () => {
+    // (Like mutation): update likes, increment the like count
+    setLikeCount(likeCount + 1);
+  };
+
+  const handleComment = () => {
+    if (commentText.trim() !== '') {
+      // (Comment mutation) update the comment list
+      const newComment = {
+        _id: 'newCommentId',
+        user: { userName: 'CurrentUser' },
+        text: commentText,
+      };
+
+      setCommentList([...commentList, newComment]);
+      setCommentText('');
+    }
+  };
 
   return (
     <Card sx={{ maxWidth: 600, margin: 'auto', marginTop: 4 }}>
@@ -42,16 +66,35 @@ const RecipeCard = ({ recipe }) => {
           By: {author.userName}
         </Typography>
 
+        {/* Like Section */}
+        <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 1 }}>
+          Likes: {likeCount}
+        </Typography>
+        <Button variant="outlined" onClick={handleLike}>
+          Like
+        </Button>
+
+        {/* Comments Section */}
         <List sx={{ mb: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: 'bold', mb: 1 }}>
             Comments:
           </Typography>
-          {comments.map((comment) => (
+          {commentList.map((comment) => (
             <ListItem key={comment._id}>
               <ListItemText primary={`${comment.user.userName}: ${comment.text}`} />
             </ListItem>
           ))}
         </List>
+        <div>
+          <textarea
+            placeholder="Add a comment..."
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+          />
+          <Button variant="outlined" onClick={handleComment}>
+            Comment
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
@@ -93,5 +136,3 @@ RecipeCard.propTypes = {
 };
 
 export default RecipeCard;
-
-
