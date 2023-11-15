@@ -29,6 +29,19 @@ function Header() {
             <span style={{ fontFamily: 'Segoe Script', fontSize: '32px', fontWeight: 'bold' }}>Flavr Plate</span>
           </Typography>
         </div>
+
+        {/* "Create a Recipe!" button in the middle */}
+        <Typography variant="h6" component="div" className="company-name" style={{ marginLeft: 'auto', marginRight: '20px' }}>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/create-recipe"  // Specify the link for creating a recipe!!!!!!
+            sx={{ ...buttonStyles }}
+          >
+            Create a Recipe!
+          </Button>
+        </Typography>
+
         <Stack direction="row" spacing={2} sx={{ marginLeft: 'auto' }}>
           {loggedIn ? (
             <>
