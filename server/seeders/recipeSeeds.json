@@ -1,47 +1,10 @@
 [
-    {
-        "name": "Homemade tomato pasta",
-        "description": "This is a delicious homemade tomato pasta",
-        "ingredients": [
-            "Tomato sauce",
-            "Tomato",
-            "Pasta",
-            "Olive oil",
-            "Salt",
-            "Pepper",
-            "Basil"
-        ],
-
-        "instructions":  "1. Boil the pasta, 2. Cut the tomato, 3. Mix the tomato and tomato sauce with the pasta, 4. Add olive oil, salt and pepper,5. Add basil leaves on top of the pasta and serve" ,
-
-        "instructions": [
-            "1. Boil the pasta",
-            "2. Cut the tomato",
-            "3. Mix the tomato and tomato sauce with the pasta",
-            "4. Add olive oil, salt and pepper",
-            "5. Add basil leaves on top of the pasta and serve"
-        ],
-        "author": "John Doe",
-        "category": "Entree",
-        "createdAt": "2019-11-11T12:00"
-       
-    },
-    {
-        "name": "Homemade cheese cake",
-        "description": "This is a delicious homemade cheese cake",
-        "ingredients": [
-            "Cream cheese",
-            "Sugar",
-            "Eggs",
-            "Butter",
-            "Flour",
-            "Vanilla extract",
-            "Lemon juice",
-            "Sour cream"
-        ],
-        "instructions": 
-            "1. Mix the cream cheese and sugar,2. Add the eggs, butter, flour, vanilla extract, lemon juice and sour cream, 3. Bake the cake in the oven for 1 hour, 4. Let the cake cool down and serve",
-        "author": "Dabbie Downer",
-        "category": "Dessert",
-        "createdAt": "2019-08-11T12:00"
-    }
+   {
+    "name": "Chocolate pudding",
+    "description": "A delicious chocolate pudding recipe",
+    "instructions": "Mix sugar, cocoa, cornstarch and salt in medium saucepan; gradually stir in milk.",
+    "author": "654fa9797984f31334c20192",
+    "ingredients": "6554001b43bc777d57dad08b",
+    "createdAt": "2016-12-01T12:00:00Z"
+}
+]
