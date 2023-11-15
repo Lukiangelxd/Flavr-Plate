@@ -48,10 +48,30 @@ const resolvers = {
             return await Recipe.findById(_id).populate(['categories', 'ingredients', 'comments']);
         },
         user: async (parent, args, context) => {
-            if (context.user) {
-              const user = await User.findById({_id: context.user._id}).populate(['likedRecipes', 'recipes', 'comments']);
+          if (context.user) {
+            try {
+              const user = await User.findById(context.user._id)
+                .populate({
+                  path: 'recipes',
+                  model: 'Recipe',
+                  populate: {
+                    path: 'comments',
+                    model: 'Comment',
+                    populate: {
+                      path: 'author',
+                      model: 'User',
+                    },
+                  },
+                })
+                .populate('likedRecipes');
+        
               return user;
+            } catch (error) {
+              console.error(error);
+              throw new Error('Error fetching user data');
             }
+          }
+          throw new Error('User not authenticated');
         },
     },
     Mutation: {
@@ -136,20 +156,24 @@ const resolvers = {
             try {
                 // Find the recipe by ID
                 const recipe = await Recipe.findById(recipeId);
+                const likingUser = await User.findById(user._id)
             
                 if (!recipe) {
                   throw new Error('Recipe not found');
                 }
                 if (recipe.likes.includes(user._id)) {
                     recipe.likes.filter(!user._id)
+                    likingUser.likedRecipes.filter(!recipe._id)
                     await recipe.save();
-                    return recipe
+                    await likingUser.save()
+                    return recipe && likingUser
                   } else {
                     // Add the user's ID to the 'likes' array of the recipe
                     recipe.likes.push(user._id);
-              
+                    likingUser.likedRecipes.push(recipe._id)
                     // Save the updated recipe
                     await recipe.save();
+                    await likingUser.save()
                   }
                   return recipe
             }catch(err){

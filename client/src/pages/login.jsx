@@ -31,6 +31,7 @@ function Login() {
       });
 
       Auth.login(data.login.token);
+      Auth.setAuthorizationHeader();
     } catch (err) {
       console.error(err);
     }

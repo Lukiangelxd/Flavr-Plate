@@ -31,6 +31,7 @@ function Signup (){
             });
       
             Auth.login(data.addUser.token);
+            Auth.setAuthorizationHeader();
           } catch (err) {
             console.error(err);
           }
