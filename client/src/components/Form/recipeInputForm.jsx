@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CreateRecipe, GET_RECIPES } from '../../utils/mutations';
-import { Box, TextField, MenuItem } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
 
 
@@ -129,4 +129,3 @@ const recipeForm = () => {
 };
 
 export default recipeForm;
-
