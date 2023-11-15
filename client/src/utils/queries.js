@@ -99,7 +99,7 @@ export const GET_USER = gql`
         comments {
           _id
           text
-          user {
+          author {
             _id
             userName  
           }
@@ -111,7 +111,6 @@ export const GET_USER = gql`
           image
           description
       }
-      createdAt
       }
     }
 `;
