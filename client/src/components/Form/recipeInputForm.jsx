@@ -5,7 +5,7 @@ import { Box, TextField } from '@mui/material';
 
 
 
-const recipeForm = () => {
+const RecipeForm = () => {
     const [recipeData, setRecipeData] = useState({
         name: "",
         description: "",
@@ -128,4 +128,4 @@ const recipeForm = () => {
     );
 };
 
-export default recipeForm;
+export default RecipeForm;
