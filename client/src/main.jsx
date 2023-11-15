@@ -6,6 +6,7 @@ import Signup from './pages/Signup'
 import App from './App.jsx'
 import Error from './pages/Errorpage'
 import Profile from './pages/Profile'
+import RecipeForm from'./pages/Form/recipeInputForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile/>
+      },
+      {
+        path: '/create-recipe',
+        element: <RecipeForm/>
       },
     ]
   }

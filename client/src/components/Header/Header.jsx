@@ -30,7 +30,7 @@ function Header() {
           </Typography>
         </div>
 
-        {/* "Create a Recipe!" button in the middle */}
+        {loggedIn ? (
         <Typography variant="h6" component="div" className="company-name" style={{ marginLeft: 'auto', marginRight: '20px' }}>
           <Button
             color="inherit"
@@ -41,7 +41,7 @@ function Header() {
             Create a Recipe!
           </Button>
         </Typography>
-
+        ): null }
         <Stack direction="row" spacing={2} sx={{ marginLeft: 'auto' }}>
           {loggedIn ? (
             <>
