@@ -32,9 +32,6 @@ export const CreateRecipe = gql`
         description
         image
         instructions
-        author {
-          _id
-        }
         categories {
           name
         }
