@@ -38,10 +38,10 @@ const SearchBar = ({ onSearchResult }) => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <form noValidate autoComplete="off" onSubmit={handleSearch}>
+      <form noValidate autoComplete="off" onSubmit={handleSearch} style={{padding:'50px'}}>
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item>
-            <label htmlFor="search" style={{ marginRight: '8px' }}>
+            <label htmlFor="search" style={{ marginRight: '8px', fontFamily: 'Segoe UI, sans-serif', fontSize:'30px' }}>
               Search:
             </label>
           </Grid>
@@ -49,7 +49,7 @@ const SearchBar = ({ onSearchResult }) => {
             <TextField
               id="search"
               type="text"
-              placeholder="Search an ingredient or recipe name"
+              placeholder="Search by category"
               value={search.query}
               onChange={handleInputChange}
             />

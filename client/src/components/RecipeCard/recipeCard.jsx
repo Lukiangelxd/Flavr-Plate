@@ -33,7 +33,7 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <Card sx={{ maxWidth: 600, margin: 'auto', marginTop: 4 }}>
-      <CardMedia component="img" height="200" image={image} alt={name} />
+      <CardMedia component="img" height="auto" image={image} alt={name} />
 
       <CardContent>
         <Typography variant="h5" component="div" sx={{ fontWeight: 'bold', mb: 2 }}>
