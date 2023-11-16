@@ -131,6 +131,7 @@ const resolvers = {
               }
           
               // Create the Recipe document and associate it with categories and ingredients
+              const author = await User.findById(user._id)
               const recipe = await Recipe.create({
                 name,
                 description,
@@ -141,6 +142,8 @@ const resolvers = {
                 ingredients: ingredientIds,
               });
               console.log('Output:', recipe);
+              author.recipes.push(recipe._id)
+              await author.save()
               const toReturn = await Recipe.findOne({_id: recipe._id}).populate(['categories', 'ingredients'])
               return toReturn;
             } catch (err) {
@@ -182,26 +185,41 @@ const resolvers = {
         
         },
         createComment: async (parent, { recipeId, input }, context) => {
-            const { user } = context
-            if (!user) {
-                throw new AuthenticationError('You must be logged in to create a comment.');
+          const { user } = context;
+          if (!user) {
+            throw new AuthenticationError('You must be logged in to create a comment.');
+          }
+        
+          try {
+            // Find the recipe by ID and populate the 'comments' and 'author' fields
+            const recipe = await Recipe.findById(recipeId).populate({ path: 'comments', populate: { path: 'author' } });
+            if (!recipe) {
+              throw new Error('Recipe not found');
             }
-            try {
-                // Find the recipe by ID
-                const recipe = await Recipe.findById(recipeId);
-            
-                if (!recipe) {
-                  throw new Error('Recipe not found');
-                }
-                    // Add the user's ID to the 'likes' array of the recipe
-                const comment = await Comment.create(input)
-                recipe.comments.push(comment)
-                    // Save the updated recipe
-                await recipe.save();
-                return recipe
-            }catch(err){
-                throw new Error('ERROR')
-            }
+        
+            // Create the comment and populate the 'author' field
+            const comment = await Comment.create({
+              text: input.text,
+              author: user._id,
+            });
+            await comment.populate('author');
+        
+            // Add the comment to the recipe's 'comments' array
+            recipe.comments.push(comment._id);
+        
+            // Save the updated recipe
+            await recipe.save();
+        
+            // Add the comment to the user's 'comments' array
+            const author = await User.findById(user._id);
+            author.comments.push(comment._id);
+            await author.save();
+        
+            return comment;
+          } catch (err) {
+            console.error(err);
+            throw new Error('Error creating comment');
+          }
         },
         deleteRecipe: async (parent, { _id }, context) => {
             const { user } = context;

@@ -1,36 +1,61 @@
-import React, { useState } from 'react';
+import  { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/client';
+import { AddComment, LikeRecipe } from '../../utils/mutations';
 import { Card, CardContent, CardMedia, Typography, List, ListItem, ListItemText, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const RecipeCard = ({ recipe }) => {
-  const { name, description, image, ingredients, instructions, author, comments, likes } = recipe;
+  const { _id, name, description, image, ingredients, instructions, author, comments, likes } = recipe;
 
   // Likes
   const [likeCount, setLikeCount] = useState(likes.length);
+  const [likeRecipe] = useMutation(LikeRecipe);
+
+  const handleLike = async () => {
+    try {
+      // Call the LikeRecipe mutation to update likes in the database
+      await likeRecipe({ variables: { recipeId: _id } });
+  
+      // Update the like count in the component state immediately
+      setLikeCount((prevLikeCount) => prevLikeCount + 1);
+    } catch (error) {
+      console.error("Error liking recipe:", error);
+    }
+  };
 
   // Comments
   const [commentText, setCommentText] = useState('');
   const [commentList, setCommentList] = useState(comments);
+  const [addComment] = useMutation(AddComment);
 
-  const handleLike = () => {
-    // (Like mutation): update likes, increment the like count
-    setLikeCount(likeCount + 1);
-  };
-
-  const handleComment = () => {
+  const handleComment = async () => {
     if (commentText.trim() !== '') {
-      // (Comment mutation) update the comment list
-      const newComment = {
-        _id: 'newCommentId',
-        user: { userName: 'CurrentUser' },
-        text: commentText,
-      };
-
-      setCommentList([...commentList, newComment]);
-      setCommentText('');
+      try {
+        // Call the AddComment mutation to add a new comment to the database
+        const { data } = await addComment({
+          variables: { recipeId: _id, input: { text: commentText } },
+        });
+  
+        // Update the comment list in the component state immediately with the newly added comment
+        const newComment = {
+          _id: data.createComment._id,
+          author: { userName: data.createComment.author.userName },
+          text: data.createComment.text,
+        };
+  
+        setCommentList([...commentList, newComment]);
+        setCommentText('');
+      } catch (error) {
+        console.error("Error adding comment:", error);
+      }
     }
   };
-
+  useEffect(() => {
+    setLikeCount(likes.length);
+  }, [likes]);
+  useEffect(() => {
+    setCommentList(comments);
+  }, [comments]);
   return (
     <Card sx={{ maxWidth: 600, margin: 'auto', marginTop: 4 }}>
       <CardMedia component="img" height="auto" image={image} alt={name} />
@@ -81,7 +106,7 @@ const RecipeCard = ({ recipe }) => {
           </Typography>
           {commentList.map((comment) => (
             <ListItem key={comment._id}>
-              <ListItemText primary={`${comment.user.userName}: ${comment.text}`} />
+              <ListItemText primary={`${comment.author.userName}: ${comment.text}`} />
             </ListItem>
           ))}
         </List>
@@ -102,6 +127,7 @@ const RecipeCard = ({ recipe }) => {
 
 RecipeCard.propTypes = {
   recipe: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     image: PropTypes.string,

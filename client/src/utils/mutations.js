@@ -61,36 +61,24 @@ export const DeleteRecipe = gql`
 
 
 export const AddComment = gql`
-    mutation addComment($recipeId: String!, $commentText: String!) {
-        addComment(recipeId: $recipeId, commentText: $commentText) {
-            _id
-            userName
-            email
-            savedRecipes {
-                recipeId
-                name
-                image
-                sourceUrl
-                comments {
-                    commentText
-                }
-            }
-        }
+    mutation createComment($recipeId: ID!, $input: CommentInput!) {
+        createComment(recipeId: $recipeId, input: $input) {
+          _id
+         text
+         author {
+          userName
+       }
     }
+  }
     `;
 // 
 export const LikeRecipe = gql`
-    mutation likeRecipe($recipeId: String!) {
+    mutation likeRecipe($recipeId: ID!) {
         likeRecipe(recipeId: $recipeId) {
             _id
-            userName
-            email
-            savedRecipes {
-                recipeId
-                name
-                image
-                sourceUrl
-                likes
+            name
+            likes {
+                _id
             }
         }
     }

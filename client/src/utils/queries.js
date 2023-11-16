@@ -62,7 +62,7 @@ export const GET_SINGLE_RECIPE = gql`
       comments {
         _id
         text
-        user {
+        author {
           _id
           userName  
         }

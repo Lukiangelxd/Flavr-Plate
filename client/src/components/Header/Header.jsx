@@ -22,7 +22,7 @@ function Header() {
     <AppBar position="static" style={{ backgroundColor: '#D8A79D', backdropFilter: 'blur(10px)' }}>
       <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <IconButton size="large" edge="start" color="inherit" aria-label="menu">
+          <IconButton size="large" edge="start" color="inherit" aria-label="menu" component={Link} to="/">
             <img src={flavrPlate} alt="logo" className="logo" />
           </IconButton>
           <Typography variant="h6" component="div" className="company-name">
