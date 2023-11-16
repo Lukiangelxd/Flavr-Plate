@@ -9,16 +9,14 @@ import { useState, useEffect } from 'react';
 const cardContainerStyle = {
   width: '200px',
   height: '100%',
-  margin: '0 10px',
+  margin: '10px',
 };
 
 const cardStyle = {
-  mt: 3,
-  mb: 2,
   backgroundColor: 'white',
   fontFamily: 'Segoe UI, sans-serif',
   '&:hover': {
-    backgroundColor: 'white',
+    backgroundColor: 'lightblue',
     transition: '0.1s',
     transform: 'scale(1.05)',
   },
