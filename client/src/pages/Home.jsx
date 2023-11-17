@@ -20,7 +20,7 @@ const Home = () => {
       <Card />
       <Searchbar onSearchResult={handleSearchResult} />
       {searchTriggered ? (
-        // Check if search has been triggered and map over the array to render RecipeCards
+        // Check if searcch has been triggered and map over the array to render RecipeCards
         searchResult.length > 0 ? (
           searchResult.map((recipe) => <RecipeCard key={recipe._id} recipe={recipe} />)
         ) : (
