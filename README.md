@@ -19,7 +19,7 @@ Welcome to **Flavr Plate**, a MERN (MongoDB, Express.js, React, Node.js) single-
 
 **Flavr Plate** is where culinary passion meets the digital world. At Flavr Plate, we believe that every meal tells a story. Our platform empowers at-home chefs, foodies, and aspiring cooks to share their culinary adventures, inspire others with their creations, and discover new flavors from around the globe.
 
-Please View our Website [HERE]()
+Please View our Website [HERE](https://fast-dusk-28454-f1d8795a0b65.herokuapp.com/)
 
 ### Screenshots
 
@@ -29,11 +29,11 @@ This is the image of the recipe input form for users
 
 ### Meet the Developers
 
-- **[Hailey](https://github.com/hailey-strauss)**: Front End Developer: Focused on Category Header and worked on 
+- **[Hailey](https://github.com/hailey-strauss)**: Front End Developer: Focused on Category Header and research.
 - **[Zach](https://github.com/zach-hoover)**: Back End Developer: Focused on Debugging and Majority of the Back End Coding.
-- **[Hannah](https://github.com/Lukiangelxd)** Front End/Project Coordinator: Focused on Main Styling using MUI. 
-- **[Lin](https://github.com/YJRose)** Back End Developer: Focused on Assisting with Back End Coding and 
-- **[Giselle](https://github.com/gmtzz)**  Front End Developer: Focused on the Search bar and Debugging
+- **[Hannah](https://github.com/Lukiangelxd)** Front End/Project Coordinator: Focused on the Main Styling using MUI. 
+- **[Lin](https://github.com/YJRose)** Back End Developer: Focused on Assisting with Back End Coding and Front End Debugging
+- **[Giselle](https://github.com/gmtzz)**  Front End Developer: Focused on the Search bar and Debugging.
 
 ## Features
 
